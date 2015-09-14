@@ -1,5 +1,6 @@
 (ns utils.core
-  (:require [com.stuartsierra.component :as c]))
+  (:require [com.stuartsierra.component :as c]
+            [bouncer.core :as b]))
 
 (defmacro with-system
   "Starts and stops a system before evaluating body"
@@ -23,6 +24,9 @@
  
 (defn valid? [v]
   (not (contains? v :bouncer.core/errors)))
+
+(defn validate [& args]
+  (second (apply b/validate args)))
 
 (defmacro while->
   "As long as the predicate holds true, threads
