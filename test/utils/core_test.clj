@@ -16,3 +16,14 @@
 
 (deftest to-int-test
   (is (= 1 (to-int "1"))))
+
+(deftest valid-test
+  (testing "valid"
+    (is (valid? {})))
+  (testing "not valid"
+    (is (not (valid? {:bouncer.core/errors "Yeah"})))))
+
+(deftest while-thread-test
+  ;; Not a great test, but whatevs
+  (is (while-> true? true))
+  (is (not (while-> true? false))))

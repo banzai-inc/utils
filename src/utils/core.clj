@@ -20,3 +20,17 @@
   (if (= java.lang.String (class s))
     (Integer/parseInt s)
     s))
+ 
+(defn valid? [v]
+  (not (contains? v :bouncer.core/errors)))
+
+(defmacro while->
+  "As long as the predicate holds true, threads
+  the expr through each form (via `->`). Once pred returns
+  false, the current value of all forms is returned."
+  [pred expr & forms]
+  (let [g (gensym)
+        pstep (fn [step] `(if (~pred ~g) (-> ~g ~step) ~g))]
+    `(let [~g ~expr
+           ~@(interleave (repeat g) (map pstep forms))]
+       ~g)))
