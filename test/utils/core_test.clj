@@ -27,3 +27,6 @@
   ;; Not a great test, but whatevs
   (is (while-> true? true))
   (is (not (while-> true? false))))
+
+(deftest info-test
+  (is (= "INFO: [123] Hello, world" (info 123 "Hello, world"))))

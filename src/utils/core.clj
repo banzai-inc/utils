@@ -1,6 +1,8 @@
 (ns utils.core
   (:require [com.stuartsierra.component :as c]
-            [bouncer.core :as b]))
+            [bouncer.core :as b]
+            [clojure.tools.logging :as l]
+            [clojure.string :refer [join]]))
 
 (defmacro with-system
   "Starts and stops a system before evaluating body"
@@ -38,3 +40,21 @@
     `(let [~g ~expr
            ~@(interleave (repeat g) (map pstep forms))]
        ~g)))
+
+(defn- log
+  "Underlying log function for the public-facing log API. f should
+  be a function that receives multiple strings as inputs."
+  [f id t messages]
+  (f nil (str t ": [" id "] " (join " " messages))))
+
+(defn info
+  [id & messages]
+  (log `l/warn id "INFO" messages))
+
+(defn warn
+  [id & messages]
+  (log `l/warn id "WARN" messages))
+
+(defn error
+  [id & messages]
+  (log `l/warn id "ERROR" messages))
