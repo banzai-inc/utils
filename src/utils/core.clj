@@ -44,17 +44,17 @@
 (defn- log
   "Underlying log function for the public-facing log API. f should
   be a function that receives multiple strings as inputs."
-  [f id t messages]
-  (f nil (str t ": [" id "] " (join " " messages))))
+  [id messages]
+  (str "[" id "] " (join " " messages)))
 
 (defn info
   [id & messages]
-  (log `l/warn id "INFO" messages))
+  (l/info (log id messages)))
 
 (defn warn
   [id & messages]
-  (log `l/warn id "WARN" messages))
+  (l/warn (log id messages)))
 
 (defn error
   [id & messages]
-  (log `l/warn id "ERROR" messages))
+  (l/error (log id messages)))
