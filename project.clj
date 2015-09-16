@@ -1,4 +1,4 @@
-(defproject com.banzai/utils "0.4.1"
+(defproject com.banzai/utils "0.5.0"
   :description "Clojure utility functions built by Banzai"
   :url "https://github.com/banzai-inc/utils"
   :license {:name "Eclipse Public License"
@@ -6,4 +6,6 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [com.stuartsierra/component "0.2.3"]
                  [org.clojure/tools.logging "0.3.1"]
-                 [bouncer "0.3.3"]])
+                 [bouncer "0.3.3"]
+                 [base64-clj "0.1.1"]
+                 [org.clojure/data.csv "0.1.3"]])
