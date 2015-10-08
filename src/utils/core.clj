@@ -43,27 +43,17 @@
            ~@(interleave (repeat g) (map pstep forms))]
        ~g)))
 
-(defn- log
-  "Underlying log function for the public-facing log API. f should
-  be a function that receives multiple strings as inputs."
-  [id messages]
-  (str "[" id "] " (join " " messages)))
-
-(defn info
-  [id & messages]
-  (l/info (log id messages)))
-
-(defn warn
-  [id & messages]
-  (l/warn (log id messages)))
-
-(defn error
-  [id & messages]
-  (l/error (log id messages)))
-
 (defn csv-to-records
   "Decodes a string and processes it as a CSV,
   returning a list of records"
   [encoded-csv]
   (let [raw (read-csv (decode encoded-csv))]
     (map (partial zipmap (first raw)) (rest raw))))
+
+(defrecord ComponentStub []
+  c/Lifecycle
+  (start [this] this)
+  (stop [this] this))
+
+(defn component-stub [& v]
+  (ComponentStub.))
