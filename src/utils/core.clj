@@ -4,7 +4,8 @@
             [clojure.tools.logging :as l]
             [clojure.string :refer [join]]
             [base64-clj.core :refer [decode]]
-            [clojure.data.csv :refer [read-csv]]))
+            [clojure.data.csv :refer [read-csv]]
+            [clojure.stacktrace :refer [print-stack-trace]]))
 
 (defmacro with-system
   "Starts and stops a system before evaluating body"
@@ -14,6 +15,7 @@
          v# (try
              ~@body
              (catch Exception e#
+               (print-stack-trace e#)
                (c/stop system#)
                (throw e#)))]
      (c/stop system#)
