@@ -8,4 +8,5 @@
                  [org.clojure/tools.logging "0.3.1"]
                  [bouncer "0.3.3"]
                  [base64-clj "0.1.1"]
-                 [org.clojure/data.csv "0.1.3"]])
+                 [org.clojure/data.csv "0.1.3"]
+                 [ring/ring-mock "0.3.0"]])
