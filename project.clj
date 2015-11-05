@@ -9,4 +9,5 @@
                  [bouncer "0.3.3"]
                  [base64-clj "0.1.1"]
                  [org.clojure/data.csv "0.1.3"]
+                 [cheshire "5.5.0"]
                  [ring/ring-mock "0.3.0"]])
