@@ -1,9 +1,11 @@
 (ns utils.test-test
   (:require [clojure.test :refer :all]
-            [utils.test :refer [request]]))
+            [utils.test :refer [process]]
+            [ring.mock.request :refer [request]]))
 
 (defn handler [req]
   true)
 
-(deftest request-test
-  (is (true? (request {:app {:handler handler}} :get "/my-url"))))
+(deftest process-request-test
+  (let [system {:app {:handler handler}}]
+    (is (true? (process system (request :get "/my-url"))))))
