@@ -33,3 +33,6 @@
   (= (csv-to-records (encode "\"First Row\",\"Second Row\",\"Third Row\"\n\"1\",2,3\n1,2,3"))
      '({"First Row" "1", "Second Row" "2", "Third Row" "3"}
        {"First Row" "1", "Second Row" "2", "Third Row" "3"})))
+
+(deftest rand-code-test
+  (is (string? (rand-code 3))))

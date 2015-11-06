@@ -59,3 +59,8 @@
 
 (defn component-stub [& v]
   (ComponentStub.))
+
+(def ^:private alphanumeric "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789")
+
+(defn rand-code [length]
+  (apply str (repeatedly length #(rand-nth alphanumeric))))
