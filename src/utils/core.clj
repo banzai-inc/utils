@@ -75,3 +75,13 @@
                      (assoc %2 :order (.indexOf (map index-key coll) (get %2 index-key)))
                      %2)]
              (assoc %1 (get s index-key) s)) {} coll))
+ 
+(defn find-by
+  "Finds maps in collection given a key and a value"
+  [coll k v]
+  (filter #(= (get % k) v) coll))
+
+(defn find-first-by
+  "Finds maps in collection given a key and a value"
+  [coll k v]
+  (first (find-by coll k v)))
