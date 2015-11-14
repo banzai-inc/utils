@@ -64,3 +64,14 @@
 
 (defn rand-code [length]
   (apply str (repeatedly length #(rand-nth alphanumeric))))
+
+(defn indexed
+  "Turns a list of maps into a map, indexed by index-key. Optional
+  order? adds an :order key."
+  [coll & {:keys [index-key order?]
+           :or {index-key :id
+                order? false}}]
+  (reduce #(let [s (if order?
+                     (assoc %2 :order (.indexOf (map index-key coll) (get %2 index-key)))
+                     %2)]
+             (assoc %1 (get s index-key) s)) {} coll))
