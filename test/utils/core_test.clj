@@ -21,6 +21,8 @@
 (deftest valid-test
   (testing "valid"
     (is (valid? {})))
+  (testing "valid not map"
+    (is (valid? [])))
   (testing "not valid"
     (is (not (valid? {:bouncer.core/errors "Yeah"})))))
 

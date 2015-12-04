@@ -29,7 +29,8 @@
     s))
  
 (defn valid? [v]
-  (not (contains? v :bouncer.core/errors)))
+  (or (not (map? v))
+      (not (contains? v :bouncer.core/errors))))
 
 (defn validate [& args]
   (second (apply b/validate args)))
