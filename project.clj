@@ -1,4 +1,4 @@
-(defproject com.banzai/utils "0.11.0"
+(defproject com.banzai/utils "0.11.1"
   :description "Clojure utility functions built by Banzai"
   :url "https://github.com/banzai-inc/utils"
   :license {:name "Eclipse Public License"
